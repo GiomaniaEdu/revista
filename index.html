@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revista Digital</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/turn.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        #controles {
+            margin-bottom: 20px;
+        }
+
+        #controles button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 0 10px;
+            cursor: pointer;
+            border: none;
+            background-color: #80a886;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #controles button:hover {
+            background-color: #186524;
+        }
+
+        #revista {
+            width: 90vw; /* 90% del ancho de la ventana */
+            height: 70vh; /* 70% de la altura de la ventana */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pagina {
+            width: 45vw; /* 45% del ancho de la ventana */
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .pagina img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .numeracion {
+            position: absolute;
+            bottom: 10px; /* Alineación desde el pie */
+            left: 50%; /* Centrado horizontal */
+            transform: translateX(-50%); /* Ajuste para que quede realmente centrado */
+            font-size: 2vw; /* El tamaño de la fuente se ajusta al ancho de la pantalla */
+            font-weight: bold;
+            color: #80a886;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        @media screen and (max-width: 768px) {
+            #revista {
+                width: 95vw; /* Aumentar el tamaño de la revista en pantallas más pequeñas */
+                height: 60vh;
+            }
+
+            .pagina {
+                width: 90vw; /* Hacer las páginas más grandes en pantallas pequeñas */
+            }
+
+            .numeracion {
+                font-size: 5vw; /* Ajustar el tamaño de la numeración en pantallas pequeñas */
+                bottom: 5%;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .numeracion {
+                font-size: 6vw; /* Ajustar aún más el tamaño en pantallas muy pequeñas */
+                bottom: 3%;
+            }
+        }
+    </style>
+</head>
+<body>
+   
+    <br/><br/>
+    <div id="revista">
+        <div class="pagina"><img src="Img/8.png" alt="Portada"></div>
+        <div class="pagina"><img src="Img/1.png"><div class="numeracion">1</div></div>
+        <div class="pagina"><img src="Img/2.png"><div class="numeracion">2</div></div>
+        <div class="pagina"><img src="Img/3.png"><div class="numeracion">3</div></div>
+        <div class="pagina"><img src="Img/4.png"><div class="numeracion">4</div></div>
+        <div class="pagina"><img src="Img/5.png"><div class="numeracion">5</div></div>
+        <div class="pagina"><img src="Img/6.png"><div class="numeracion">6</div></div>
+        <div class="pagina"><img src="Img/7.png"><div class="numeracion">7</div></div>
+        <div class="pagina"><img src="Img/8.png"><div class="numeracion">8</div></div>
+    </div>
+<br/><br/>
+    <div id="controles">
+        <button id="anterior"><</button>
+        <button id="siguiente">></button>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#revista').turn({
+                width: '100%',
+                height: '100%',
+                autoCenter: true,
+                display: 'double',
+                acceleration: true,
+                gradients: true,
+                duration: 1000
+            });
+
+            $('#siguiente').click(function() {
+                $('#revista').turn('next');
+            });
+
+            $('#anterior').click(function() {
+                $('#revista').turn('previous');
+            });
+        });
+    </script>
+</body>
+</html>
